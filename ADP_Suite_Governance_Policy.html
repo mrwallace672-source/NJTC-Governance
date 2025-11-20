@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADP Suite: Employee Profile Dashboard - Governance Policy</title>
+    <style>
+        :root {
+            --njtc-blue: #0052A5;
+            --njtc-teal: #3AAFA9;
+            --njtc-navy: #17252A;
+            --adp-red: #D93025;
+            --adp-orange: #F57C00;
+            --success-green: #2E7D32;
+            --warning-yellow: #F9A825;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #424242;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--njtc-blue) 0%, var(--njtc-navy) 100%);
+            color: var(--white);
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .adp-badge {
+            background: var(--adp-red);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .nav-menu {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, var(--njtc-teal) 0%, var(--njtc-blue) 100%);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(58, 175, 169, 0.4);
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--njtc-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--njtc-teal);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: var(--njtc-navy);
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: var(--njtc-blue);
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: var(--njtc-teal);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf2 100%);
+            border-left: 4px solid var(--njtc-teal);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .metric-card {
+            background: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--medium-gray);
+        }
+
+        .metric-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--njtc-navy);
+        }
+
+        .metric-badge {
+            background: var(--njtc-teal);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .benchmark-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .benchmark-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 2px solid var(--medium-gray);
+            transition: all 0.3s ease;
+        }
+
+        .benchmark-item:hover {
+            border-color: var(--njtc-teal);
+            box-shadow: 0 4px 12px rgba(58, 175, 169, 0.2);
+        }
+
+        .benchmark-label {
+            font-weight: 600;
+            color: var(--njtc-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .benchmark-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin: 0.5rem 0;
+        }
+
+        .benchmark-context {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            line-height: 1.4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--njtc-blue) 0%, var(--njtc-navy) 100%);
+            color: var(--white);
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        tr:hover {
+            background: var(--light-gray);
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-yes {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .status-no {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+
+        .status-maybe {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .status-pending {
+            background: #b3e5fc;
+            color: #01579b;
+        }
+
+        .alert-box {
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 5px solid;
+            font-weight: 500;
+        }
+
+        .alert-info {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #0d47a1;
+        }
+
+        .alert-warning {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #e65100;
+        }
+
+        .alert-success {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #1b5e20;
+        }
+
+        .alert-danger {
+            background: #ffebee;
+            border-color: #f44336;
+            color: #b71c1c;
+        }
+
+        .accordion {
+            margin: 1.5rem 0;
+        }
+
+        .accordion-item {
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, var(--njtc-blue) 0%, var(--njtc-navy) 100%);
+            color: var(--white);
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, var(--njtc-navy) 0%, var(--njtc-blue) 100%);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--white);
+        }
+
+        .accordion-content.active {
+            max-height: 2000px;
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .arrow.rotate {
+            transform: rotate(180deg);
+        }
+
+        .visual-chart {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf2 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            background: var(--medium-gray);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-green) 0%, var(--njtc-teal) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            transition: width 1s ease;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-marker {
+            min-width: 40px;
+            height: 40px;
+            background: var(--njtc-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-right: 1.5rem;
+            box-shadow: 0 2px 8px rgba(58, 175, 169, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--njtc-teal);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--njtc-navy) 0%, var(--njtc-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .data-source-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .metric-visualization {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-viz-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .metric-viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-viz-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .metric-viz-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+            }
+
+            .benchmark-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            border-bottom: 2px dotted var(--njtc-teal);
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: var(--njtc-navy);
+            color: var(--white);
+            text-align: center;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .role-tutor {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .role-certified {
+            background: #b3e5fc;
+            color: #01579b;
+        }
+
+        .role-sub {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .role-apprentice {
+            background: #f8bbd0;
+            color: #880e4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div>
+                    <div class="logo-text">
+                        <span style="color: var(--njtc-teal);">New Jersey Tutoring Corps</span> & 
+                        <span style="color: var(--white);">Pennsylvania Tutoring Corps</span>
+                    </div>
+                    <div class="subtitle">ADP Suite: Employee Profile Dashboard</div>
+                </div>
+            </div>
+            <div class="adp-badge">ADP POWERED</div>
+        </div>
+    </div>
+    
+    <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 1rem 2rem; text-align: center; border-bottom: 3px solid var(--adp-orange);">
+        <p style="color: var(--dark-gray); font-weight: 600; margin: 0;">
+            ⚠️ <strong>Important:</strong> All numerical values and percentages shown in this policy are representative examples for illustration purposes. 
+            For current, real-time metrics, please access the live ADP Suite dashboard.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="nav-menu">
+            <button class="nav-button" onclick="showSection('overview')">📊 Overview</button>
+            <button class="nav-button" onclick="showSection('purpose')">🎯 Purpose & Goals</button>
+            <button class="nav-button" onclick="showSection('components')">🔧 System Components</button>
+            <button class="nav-button" onclick="showSection('benchmarks')">📈 Benchmarks & Metrics</button>
+            <button class="nav-button" onclick="showSection('decisions')">✅ Rehire Decisions</button>
+            <button class="nav-button" onclick="showSection('workflow')">⚙️ Workflow & Updates</button>
+            <button class="nav-button" onclick="showSection('governance')">🛡️ Governance & Access</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="section active">
+            <h1><span class="icon">📊</span> ADP Suite Overview</h1>
+            
+            <div class="alert-box alert-info">
+                <strong>Welcome to the ADP Suite Governance Policy!</strong> This living document provides comprehensive guidance on the Employee Profile Dashboard, removing subjectivity from rehiring decisions through data-driven benchmarks and programmatic context.
+            </div>
+
+            <div class="alert-box alert-warning">
+                <strong>Note:</strong> All numerical values and percentages shown throughout this document are <strong>representative examples</strong> based on historical data patterns. For current, real-time metrics, please access the live ADP Suite dashboard directly.
+            </div>
+
+            <div class="metric-visualization">
+                <div class="metric-viz-card" style="background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);">
+                    <div class="metric-viz-label">Active Employees</div>
+                    <div class="metric-viz-number">61*</div>
+                    <div class="metric-viz-label">Example Metric</div>
+                </div>
+                <div class="metric-viz-card" style="background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);"> <div class="metric-viz-label">Archived in ADP</div>
+                    <div class="metric-viz-number">363*</div>
+                    <div class="metric-viz-label">Example Metric</div>
+                </div>
+                <div class="metric-viz-card" style="background: linear-gradient(135deg, #c62828 0%, #e53935 100%);">
+                    <div class="metric-viz-label">Attendance Rate</div>
+                    <div class="metric-viz-number">90.37%*</div>
+                    <div class="metric-viz-label">Example Target</div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-style: italic; color: var(--dark-gray); margin-top: 0.5rem;">
+                <small>* Representative examples based on historical data. Access the live dashboard for current metrics.</small>
+            </p>
+
+            <h2>What is the ADP Suite?</h2>
+            <div class="card">
+                <p>The <strong>ADP Suite: Employee Profile Dashboard</strong> is a comprehensive data integration system that combines workforce data from ADP Workforce Now with operational and academic performance metrics. It creates a complete profile of onsite staff and provides <span class="highlight">automated rehire recommendations</span> based on objective, measurable benchmarks.</p>
+            </div>
+
+            <h3>Key Features</h3>
+            <div class="benchmark-grid">
+                <div class="benchmark-item">
+                    <div class="benchmark-label">🔄 Automated Decisions</div>
+                    <p class="benchmark-context">Removes subjectivity by using data-driven benchmarks across attendance, academic performance, and tutor-scholar relationships.</p>
+                </div>
+                <div class="benchmark-item">
+                    <div class="benchmark-label">📊 Comprehensive Profiles</div>
+                    <p class="benchmark-context">Integrates ADP demographic data with program concern documentation and academic survey results.</p>
+                </div>
+                <div class="benchmark-item">
+                    <div class="benchmark-label">📈 Performance Tracking</div>
+                    <p class="benchmark-context">Monitors placement progress, scholar learning gains, and tutor effectiveness across all sites.</p>
+                </div>
+                <div class="benchmark-item">
+                    <div class="benchmark-label">🎯 Clear Accountability</div>
+                    <p class="benchmark-context">Establishes transparent expectations for different tutor roles and engagement periods.</p>
+                </div>
+            </div>
+
+            <h3>Data Sources</h3>
+            <div class="visual-chart">
+                <h4>Integrated Data Ecosystem</h4>
+                <div style="margin-top: 1.5rem;">
+                    <span class="data-source-badge">ADP Workforce Now</span>
+                    <span class="data-source-badge">Program Concern Forms</span>
+                    <span class="data-source-badge">PEARL Scholar Surveys</span>
+                    <span class="data-source-badge">Attendance Systems</span>
+                    <span class="data-source-badge">Academic Assessments</span>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--dark-gray);">
+                    All data sources are automatically synchronized and updated weekly to provide real-time insights into employee performance.
+                </p>
+            </div>
+        </div>
+
+        <!-- Purpose & Goals Section -->
+        <div id="purpose" class="section">
+            <h1><span class="icon">🎯</span> Purpose & Goals</h1>
+
+            <div class="alert-box alert-success">
+                <strong>Mission:</strong> To create a fair, transparent, and data-driven approach to evaluating employee performance and making informed rehiring decisions that serve the best interests of both tutors and scholars.
+            </div>
+
+            <h2>Primary Objectives</h2>
+            
+            <div class="card">
+                <h3>1. Eliminate Subjective Bias in Rehiring Decisions</h3>
+                <p>By establishing clear, measurable benchmarks across four key areas (academic performance, attendance, tutor-scholar rapport, and program concerns), the ADP Suite ensures that rehiring decisions are based on objective data rather than personal opinions or incomplete information.</p>
+                <ul>
+                    <li><strong>Quantifiable Metrics:</strong> All decisions are grounded in numerical thresholds and documented evidence</li>
+                    <li><strong>Consistent Standards:</strong> The same criteria apply to all employees in equivalent roles</li>
+                    <li><strong>Transparent Process:</strong> Employees understand what is expected and how they are evaluated</li>
+                    <li><strong>Defensible Outcomes:</strong> Every decision can be traced back to specific performance data</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>2. Provide Comprehensive Employee Performance Profiles</h3>
+                <p>The dashboard creates a holistic view of each employee by integrating multiple data sources into a single, accessible profile that tracks performance across time and locations.</p>
+                <h4>Profile Components Include:</h4>
+                <ul>
+                    <li>Demographic and employment information from ADP</li>
+                    <li>Historical work locations and role assignments</li>
+                    <li>Program concern documentation with timestamps</li>
+                    <li>Scholar survey feedback on learning and rapport</li>
+                    <li>Academic placement progress data</li>
+                    <li>Attendance rates and consistency metrics</li>
+                    <li>Rehire eligibility status with supporting context</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>3. Support Informed Leadership Decision-Making</h3>
+                <p>Program leaders and HR teams gain access to actionable insights that support strategic staffing decisions, performance interventions, and resource allocation.</p>
+            </div>
+
+            <div class="card">
+                <h3>4. Maintain Historical Accuracy and Compliance</h3>
+                <p>The system preserves a complete, auditable record of employee performance and organizational decision-making that supports compliance, research, and continuous improvement.</p>
+                <div class="alert-box alert-info">
+                    <strong>Data Retention:</strong> The dashboard distinguishes between "Active" employees and those "Archived in ADP," preserving historical data from the 2022-2023 cycle forward.
+                </div>
+            </div>
+        </div>
+
+        <!-- System Components Section -->
+        <div id="components" class="section">
+            <h1><span class="icon">🔧</span> System Components</h1>
+
+            <div class="alert-box alert-info">
+                The ADP Suite integrates three primary data sources to create comprehensive employee profiles.
+            </div>
+
+            <h2>1. ADP Workforce Now Integration</h2>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-title">Employee Census Report</div>
+                    <div class="metric-badge">Direct from ADP</div>
+                </div>
+                
+                <h4>Data Fields Captured:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field Category</th>
+                            <th>Specific Data Elements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Identification</strong></td>
+                            <td>Name, Employee ID</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Employment Status</strong></td>
+                            <td>Active, Terminated, Archived</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Role Assignment</strong></td>
+                            <td>Sub Tutor, Non-cert Tutor, Certified Tutor, Apprentice, Instructional Coach, Coordinator</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location History</strong></td>
+                            <td>All sites worked across academic cycles</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dates</strong></td>
+                            <td>Hire Date, Rehire Date, Termination Date</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Certifications</strong></td>
+                            <td>Certification Type and Status</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rehire Status</strong></td>
+                            <td>SY Rehire (Yes/No)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>2. Program Concern Documentation</h2>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-title">Program Concern Form</div>
+                    <div class="metric-badge">Program Team Owned</div>
+                </div>
+                
+                <div class="benchmark-grid">
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">One PGP Recorded</div>
+                        <div class="benchmark-value" style="color: var(--warning-yellow);">6*</div>
+                        <p class="benchmark-context">Example: Employees with single documented concern</p>
+                    </div>
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">Three PGPs Recorded</div>
+                        <div class="benchmark-value" style="color: var(--adp-orange);">4*</div>
+                        <p class="benchmark-context">Example: Employees requiring enhanced monitoring</p>
+                    </div>
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">Six PGPs Recorded</div>
+                        <div class="benchmark-value" style="color: var(--adp-red);">1*</div>
+                        <p class="benchmark-context">Example: Critical performance intervention needed</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: var(--dark-gray); margin-top: 1rem;">
+                    <small>* Example metrics for illustration purposes. View live dashboard for current data.</small>
+                </p>
+            </div>
+
+            <h2>3. PEARL Scholar Survey Data</h2>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-title">Academic & Relationship Metrics</div>
+                    <div class="metric-badge">Scholar-Reported</div>
+                </div>
+                
+                <div class="benchmark-grid">
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">📚 Scholar Learning Gained</div>
+                        <div class="benchmark-value">4.3*</div>
+                        <p class="benchmark-context">Example score on 1-5 Likert scale</p>
+                    </div>
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">❤️ Enjoyment with Tutor Score</div>
+                        <div class="benchmark-value">4.5*</div>
+                        <p class="benchmark-context">Example score on 1-5 Likert scale</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: var(--dark-gray); margin-top: 0.5rem;">
+                    <small>* Example average scores for reference. Actual scores vary by tutor and cycle.</small>
+                </p>
+
+                <h4>Academic Placement Tracking:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Progress Category</th>
+                            <th>Example Performance*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="status-badge status-yes">2+ Placement Progress</span></td>
+                            <td>13.14%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-badge status-yes">1 Placement Progress</span></td>
+                            <td>46.03%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-badge status-maybe">No Placement Progress</span></td>
+                            <td>46.56%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-badge status-no">Regressed from Baseline</span></td>
+                            <td>7.41%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center; font-style: italic; color: var(--dark-gray); margin-top: 0.5rem;">
+                    <small>* Example percentages based on historical cycle data for reference only.</small>
+                </p>
+            </div>
+        </div>
+
+        <!-- Benchmarks Section -->
+        <div id="benchmarks" class="section">
+            <h1><span class="icon">📈</span> Benchmarks & Metrics</h1>
+
+            <div class="alert-box alert-success">
+                <strong>Evidence-Based Standards:</strong> All benchmarks are calibrated based on research on high-impact tutoring effectiveness.
+            </div>
+
+            <h2>Scholar Learning Gained Benchmarks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Engagement Period</th>
+                        <th>Target Rating</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Full School Year</strong> (180 days)</td>
+                        <td><span class="status-badge status-yes">4.2+ out of 5</span></td>
+                        <td>Full cycle allows time for skill mastery</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partial Year</strong> (60-125 days)</td>
+                        <td><span class="status-badge status-maybe">4.0+ out of 5</span></td>
+                        <td>Shorter periods still require strong learning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimum Floor</strong> (any length)</td>
+                        <td><span class="status-badge status-no">3.8+ out of 5</span></td>
+                        <td>Below triggers program review</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Scholar/Tutor Rapport Benchmarks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Engagement Period</th>
+                        <th>Target Rating</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Full School Year</strong></td>
+                        <td><span class="status-badge status-yes">4.5+ out of 5</span></td>
+                        <td>Rapport drives HIT effectiveness</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partial Year</strong></td>
+                        <td><span class="status-badge status-yes">4.3+ out of 5</span></td>
+                        <td>Strong rapport still required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimum Floor</strong></td>
+                        <td><span class="status-badge status-maybe">4.0+ out of 5</span></td>
+                        <td>Critical for HIT model</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Academic Placement Progress Standards</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tutor Role</th>
+                        <th>Benchmark % Movement</th>
+                        <th>Max Regression</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="role-badge role-tutor">Full Cycle Tutor</span></td>
+                        <td><span class="status-badge status-yes">65%</span></td>
+                        <td><span class="status-badge status-yes">≤ 5%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="role-badge role-certified">Partial Cycle Tutor</span></td>
+                        <td><span class="status-badge status-maybe">55%</span></td>
+                        <td><span class="status-badge status-maybe">≤ 7%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="role-badge role-sub">Substitute Tutor</span></td>
+                        <td><span class="status-badge status-maybe">45%</span></td>
+                        <td><span class="status-badge status-no">≤ 10%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Decisions Section -->
+        <div id="decisions" class="section">
+            <h1><span class="icon">✅</span> Automated Rehire Decision Framework</h1>
+
+            <div class="alert-box alert-success">
+                <strong>Objective Methodology:</strong> The ADP Suite evaluates four key benchmarks to generate automated rehire recommendations.
+            </div>
+
+            <h2>Decision Categories</h2>
+            <div class="benchmark-grid">
+                <div class="benchmark-item" style="border-color: var(--success-green); background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                    <div class="benchmark-label" style="color: var(--success-green);">✅ YES</div>
+                    <div class="benchmark-value" style="color: var(--success-green);">149*</div>
+                    <p class="benchmark-context">All benchmarks met. Strongly recommended.</p>
+                </div>
+                <div class="benchmark-item" style="border-color: var(--njtc-teal); background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);">
+                    <div class="benchmark-label" style="color: var(--njtc-teal);">📊 UNKNOWN</div>
+                    <div class="benchmark-value" style="color: var(--njtc-teal);">115*</div>
+                    <p class="benchmark-context">At least 1 metric missing.</p>
+                </div>
+                <div class="benchmark-item" style="border-color: var(--warning-yellow); background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);">
+                    <div class="benchmark-label" style="color: var(--adp-orange);">⚠️ MAYBE</div>
+                    <div class="benchmark-value" style="color: var(--adp-orange);">60*</div>
+                    <p class="benchmark-context">Mixed performance. Leadership review required.</p>
+                </div>
+                <div class="benchmark-item" style="border-color: var(--adp-red); background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);">
+                    <div class="benchmark-label" style="color: var(--adp-red);">❌ NO</div>
+                    <div class="benchmark-value" style="color: var(--adp-red);">41*</div>
+                    <p class="benchmark-context">Multiple benchmarks not met.</p>
+                </div>
+                <div class="benchmark-item" style="border-color: var(--njtc-blue); background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+                    <div class="benchmark-label" style="color: var(--njtc-blue);">⏳ PENDING</div>
+                    <div class="benchmark-value" style="color: var(--njtc-blue);">61*</div>
+                    <p class="benchmark-context">Academic data pending.</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-style: italic; color: var(--dark-gray); margin-top: 1rem;">
+                <small>* Example distribution from historical cycle. Current decision counts available in live dashboard.</small>
+            </p>
+
+            <h2>Decision Logic Details</h2>
+            <div class="card">
+                <h3>✅ YES Decision - All Benchmarks Met</h3>
+                <ul>
+                    <li>✓ Scholar Learning Gained meets threshold</li>
+                    <li>✓ Enjoyment with Tutor Score meets threshold</li>
+                    <li>✓ Attendance rate ≥ 90%</li>
+                    <li>✓ Academic placement progress meets expectations</li>
+                    <li>✓ No significant program concerns</li>
+                </ul>
+                <p><strong>Action:</strong> Extend rehire offer for next cycle</p>
+            </div>
+
+            <div class="card">
+                <h3>⚠️ MAYBE Decision - Mixed Performance</h3>
+                <p>Requires Program Team review to determine if contextual factors warrant rehire despite below-threshold metrics in one or more areas.</p>
+                <p><strong>Action:</strong> Case-by-case leadership decision with documented rationale</p>
+            </div>
+
+            <div class="card">
+                <h3>❌ NO Decision - Not Recommended</h3>
+                <ul>
+                    <li>Multiple benchmark failures</li>
+                    <li>Severe program concerns (4+ PGPs)</li>
+                    <li>HR-escalated termination</li>
+                    <li>Critical attendance (<80%)</li>
+                </ul>
+                <p><strong>Action:</strong> Non-renewal or termination with HR coordination</p>
+            </div>
+        </div>
+
+        <!-- Workflow Section -->
+        <div id="workflow" class="section">
+            <h1><span class="icon">⚙️</span> Workflow & Update Schedule</h1>
+
+            <div class="alert-box alert-info">
+                <strong>Living System:</strong> The ADP Suite operates with weekly data refreshes ensuring current information is always available.
+            </div>
+
+            <h2>Update Frequency</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Component</th>
+                        <th>Update Frequency</th>
+                        <th>Update Day/Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ADP Census Data</td>
+                        <td>Weekly</td>
+                        <td>Monday by EOD</td>
+                    </tr>
+                    <tr>
+                        <td>Program Concern Forms</td>
+                        <td>Weekly</td>
+                        <td>Monday by EOD</td>
+                    </tr>
+                    <tr>
+                        <td>Attendance Data</td>
+                        <td>Weekly</td>
+                        <td>Monday by EOD</td>
+                    </tr>
+                    <tr>
+                        <td>Academic Data (MOY)</td>
+                        <td>Mid-Year Only</td>
+                        <td>January</td>
+                    </tr>
+                    <tr>
+                        <td>Academic Data (EOY)</td>
+                        <td>End-of-Year Only</td>
+                        <td>May/June</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Annual Cycle Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>September-October: Baseline & Setup</h4>
+                        <p>New employee onboarding, initial assessments, dashboard profile creation</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>January: Mid-Year Assessment (MOY)</h4>
+                        <p>Academic data collection, PEARL surveys, preliminary rehire decisions</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>May-June: End-of-Year Assessment (EOY)</h4>
+                        <p>Final academic data, PEARL surveys, final rehire decisions</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>July-August: Rehire Communications</h4>
+                        <p>Offers extended, feedback provided, recruitment for vacancies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Governance Section -->
+        <div id="governance" class="section">
+            <h1><span class="icon">🛡️</span> Governance & Access Control</h1>
+
+            <div class="alert-box alert-info">
+                <strong>Data Stewardship:</strong> The Director of Program Evaluation and Impact serves as the primary data steward and system owner.
+            </div>
+
+            <h2>Access Levels & Permissions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User Role</th>
+                        <th>Access Scope</th>
+                        <th>Key Permissions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Executive Leadership</strong></td>
+                        <td>System-Wide</td>
+                        <td>View all, approve policy changes, override decisions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Human Resources</strong></td>
+                        <td>System-Wide</td>
+                        <td>View all, edit ADP data, process employment actions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Director of PEI</strong></td>
+                        <td>System-Wide</td>
+                        <td>Full administration, data quality management, reporting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Program Coordinators</strong></td>
+                        <td>Site-Specific</td>
+                        <td>View assigned sites, submit concerns, access site reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Employees</strong></td>
+                        <td>Personal Only</td>
+                        <td>View own dashboard, read-only access</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Data Privacy & Confidentiality</h2>
+            <div class="card">
+                <h4>Protected Information:</h4>
+                <ul>
+                    <li>Employee personal data protected by FERPA and employment law</li>
+                    <li>Performance records are confidential employment records</li>
+                    <li>Scholar data has identifying information removed</li>
+                    <li>Medical/accommodation information maintained separately by HR</li>
+                </ul>
+            </div>
+
+            <div class="alert-box alert-danger">
+                <strong>Violation Consequences:</strong> Unauthorized access, sharing, or misuse of ADP Suite data may result in disciplinary action up to and including termination.
+            </div>
+
+            <h2>Policy Change Management</h2>
+            <div class="card">
+                <h4>Types of Changes:</h4>
+                <p><span class="status-badge status-yes">Minor Changes</span> - Director of PEI Authority: Visual improvements, data corrections, report formatting</p>
+                <p><span class="status-badge status-maybe">Moderate Changes</span> - Program Team Approval: Benchmark adjustments (±0.2), new features, timing changes</p>
+                <p><span class="status-badge status-no">Major Changes</span> - Executive Approval: Methodology changes, new metrics, decision logic alterations</p>
+            </div>
+
+            <h2>Continuous Improvement</h2>
+            <div class="card">
+                <p><strong>Annual System Review:</strong> Each summer, the Director of PEI conducts comprehensive review of benchmark effectiveness, decision accuracy, data quality, user experience, and equity analysis.</p>
+                <div class="alert-box alert-success">
+                    <strong>Commitment:</strong> This governance policy will evolve based on organizational learning, user feedback, and best practices in human capital management.
+                </div>
+            </div>
+
+            <h2>Contact Information</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue Type</th>
+                        <th>Contact</th>
+                        <th>Response Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Technical Issues / Access</td>
+                        <td>Director of Program Evaluation and Impact</td>
+                        <td>24-48 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Data Accuracy Questions</td>
+                        <td>Director of PEI or Site Coordinator</td>
+                        <td>48 hours</td>
+                    </tr>
+                    <tr>
+                        <td>HR / Employment Actions</td>
+                        <td>Human Resources Team</td>
+                        <td>24-48 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Policy Interpretation</td>
+                        <td>Director of PEI and HR</td>
+                        <td>5 business days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <h3>New Jersey Tutoring Corps & Pennsylvania Tutoring Corps</h3>
+            <p style="margin-top: 1rem;">ADP Suite: Employee Profile Dashboard - Living Governance Policy</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
+                Empowering data-driven decisions to support tutor success and scholar achievement
+            </p>
+            <div class="footer-links">
+                <a href="#overview" class="footer-link" onclick="showSection('overview'); window.scrollTo(0,0);">Overview</a>
+                <a href="#purpose" class="footer-link" onclick="showSection('purpose'); window.scrollTo(0,0);">Purpose</a>
+                <a href="#components" class="footer-link" onclick="showSection('components'); window.scrollTo(0,0);">Components</a>
+                <a href="#benchmarks" class="footer-link" onclick="showSection('benchmarks'); window.scrollTo(0,0);">Benchmarks</a>
+                <a href="#decisions" class="footer-link" onclick="showSection('decisions'); window.scrollTo(0,0);">Decisions</a>
+                <a href="#workflow" class="footer-link" onclick="showSection('workflow'); window.scrollTo(0,0);">Workflow</a>
+                <a href="#governance" class="footer-link" onclick="showSection('governance'); window.scrollTo(0,0);">Governance</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.8;">
+                © 2025 New Jersey Tutoring Corps & Pennsylvania Tutoring Corps. All rights reserved.<br>
+                Powered by ADP Workforce Now | Version 1.0 | Last Updated: November 2025
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) targetSection.classList.add('active');
+            history.pushState(null, null, '#' + sectionId);
+        }
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.arrow');
+            content.classList.toggle('active');
+            arrow.classList.toggle('rotate');
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) showSection(hash);
+            
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-bar');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => bar.style.width = width, 100);
+                });
+            }, 500);
+        });
+
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.substring(1);
+            showSection(hash || 'overview');
+        });
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300 && !document.getElementById('scroll-top-btn')) {
+                const btn = document.createElement('button');
+                btn.id = 'scroll-top-btn';
+                btn.innerHTML = '↑';
+                btn.style.cssText = `
+                    position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
+                    border-radius: 50%; background: linear-gradient(135deg, var(--njtc-teal) 0%, var(--njtc-blue) 100%);
+                    color: white; border: none; font-size: 1.5rem; cursor: pointer;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); z-index: 1000; transition: all 0.3s ease;
+                `;
+                btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+                btn.onmouseover = function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+                };
+                btn.onmouseout = function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                };
+                document.body.appendChild(btn);
+            } else if (window.pageYOffset <= 300) {
+                const btn = document.getElementById('scroll-top-btn');
+                if (btn) btn.remove();
+            }
+        });
+    </script>
+</body>
+</html>
