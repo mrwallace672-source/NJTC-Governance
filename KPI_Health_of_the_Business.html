@@ -1,0 +1,1440 @@
+<!Disc. html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>NJTC | KPI: Health of the Business Guide (SY25-26)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --njtc-navy: #002b5c;
+            --njtc-gold: #f4b000;
+            --njtc-light: #f5f7fb;
+            --njtc-gray: #4a4a4a;
+            --njtc-accent: #0066cc;
+            --border-radius: 8px;
+            --shadow-soft: 0 2px 6px rgba(0,0,0,0.06);
+            --shadow-medium: 0 4px 12px rgba(0,0,0,0.1);
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--njtc-gray);
+            background: #fafbfc;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--njtc-navy), #001733);
+            color: #ffffff;
+            padding: 32px 20px 48px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header .inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .tagline {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            opacity: 0.95;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            margin: 8px 0 12px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subheading {
+            font-size: 1rem;
+            opacity: 0.92;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .pill-row {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+
+        .pill {
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 6px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.2s ease;
+        }
+
+        .pill:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--njtc-gold);
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 2px solid #e4e7f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        nav .inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            overflow-x: auto;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--njtc-gray);
+            padding: 8px 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: var(--njtc-light);
+            color: var(--njtc-navy);
+        }
+
+        nav a.active {
+            background: var(--njtc-navy);
+            color: #ffffff;
+        }
+
+        main {
+            max-width: var(--max-width);
+            margin: 32px auto 60px;
+            padding: 0 20px 60px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        section h2 {
+            margin: 0 0 12px;
+            font-size: 1.75rem;
+            color: var(--njtc-navy);
+            font-weight: 700;
+            border-left: 4px solid var(--njtc-gold);
+            padding-left: 16px;
+        }
+
+        section h3 {
+            margin: 24px 0 12px;
+            font-size: 1.3rem;
+            color: var(--njtc-navy);
+            font-weight: 600;
+        }
+
+        section p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 8px 0 16px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            border: 1px solid #e4e7f0;
+            box-shadow: var(--shadow-soft);
+            padding: 24px;
+            margin-top: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--njtc-navy);
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: #7a7a7a;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: var(--njtc-light);
+            color: var(--njtc-navy);
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--njtc-gold);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .pill-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 8px 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-list li {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid #e4e7f0;
+            background: #fafbff;
+        }
+
+        .status-bands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .status-chip {
+            border-radius: 999px;
+            border: 1px solid #e4e7f0;
+            font-size: 0.8rem;
+            padding: 8px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+        }
+
+        .status-chip span {
+            font-weight: 700;
+        }
+
+        .status-has-met {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+        }
+
+        .status-partially-met {
+            border-color: #f59e0b;
+            background: #fffbeb;
+            color: #92400e;
+        }
+
+        .status-has-not-met {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .status-in-progress {
+            border-color: #6366f1;
+            background: #eef2ff;
+            color: #3730a3;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flex-col-2 {
+            flex: 1 1 300px;
+        }
+
+        .flex-col-3 {
+            flex: 1 1 280px;
+        }
+
+        .strategic-goal-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fc);
+            border: 2px solid var(--njtc-navy);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .strategic-goal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .strategic-goal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .strategic-goal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--njtc-navy);
+            margin-bottom: 8px;
+        }
+
+        .strategic-goal-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mission-vision-card {
+            background: #ffffff;
+            border-left: 4px solid var(--njtc-gold);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .mission-vision-card h4 {
+            margin: 0 0 12px;
+            font-size: 1.1rem;
+            color: var(--njtc-navy);
+            font-weight: 700;
+        }
+
+        .mission-vision-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .accordion {
+            margin-top: 16px;
+        }
+
+        .accordion-item {
+            background: #ffffff;
+            border: 1px solid #e4e7f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fc;
+            transition: background 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            background: #eef2f7;
+        }
+
+        .accordion-header-title {
+            font-weight: 600;
+            color: var(--njtc-navy);
+            font-size: 1rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: var(--njtc-navy);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content-inner {
+            padding: 20px;
+        }
+
+        .kpi-item {
+            background: #fafbff;
+            border: 1px solid #e4e7f0;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .kpi-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .kpi-id {
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: var(--njtc-navy);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .kpi-target {
+            font-size: 0.9rem;
+            color: var(--njtc-gray);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .kpi-meta {
+            font-size: 0.75rem;
+            color: #7a7a7a;
+            margin-top: 8px;
+        }
+
+        .kpi-meta strong {
+            color: var(--njtc-navy);
+        }
+
+        form {
+            margin-top: 16px;
+        }
+
+        form label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+        }
+
+        form label span {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--njtc-navy);
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #d5d8e5;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #ffffff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--njtc-navy);
+            box-shadow: 0 0 0 3px rgba(0, 43, 92, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.5;
+        }
+
+        button[type="submit"] {
+            margin-top: 12px;
+            background: var(--njtc-navy);
+            color: #ffffff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #001733;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        #submission-status {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        #submission-status.success {
+            display: block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        #submission-status.error {
+            display: block;
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: #7a7a7a;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .kpi-directory-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kpi-filter-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #d5d8e5;
+            font-size: 0.85rem;
+            background: #ffffff;
+            min-width: 200px;
+        }
+
+        .kpi-card {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            border: 1px solid #e4e7f0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .kpi-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+            border-color: var(--njtc-navy);
+        }
+
+        .kpi-card-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e4e7f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #7a7a7a;
+        }
+
+        .kpi-action {
+            font-size: 0.75rem;
+            color: var(--njtc-navy);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .reporting-cadence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .reporting-cadence-item {
+            background: #ffffff;
+            border: 1px solid #e4e7f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .reporting-cadence-item h4 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+            color: var(--njtc-navy);
+            font-weight: 700;
+        }
+
+        .reporting-cadence-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 24px 16px 32px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            section h2 {
+                font-size: 1.4rem;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            nav .inner {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <div class="tagline">New Jersey Tutoring Corps · Strategic Performance Framework</div>
+            <h1>KPI: Health of the Business Guide · SY25-26</h1>
+            <p class="subheading">
+                This comprehensive guide translates our strategic plan into measurable indicators of organizational health. 
+                Each KPI represents our commitment to scholar impact, financial sustainability, and operational excellence—
+                providing clarity, accountability, and a unified direction for every team member.
+            </p>
+            <div class="pill-row">
+                <div class="pill"><span class="pill-dot"></span><span>Grow Impact</span></div>
+                <div class="pill"><span class="pill-dot"></span><span>Ensure Long-Term Financial Sustainability</span></div>
+                <div class="pill"><span class="pill-dot"></span><span>Strengthen Organizational Infrastructure</span></div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="inner">
+            <a href="#overview">Overview</a>
+            <a href="#mission-vision">Mission & Vision</a>
+            <a href="#strategic-goals">Strategic Goals</a>
+            <a href="#annual-goals">Annual Goals & KPIs</a>
+            <a href="#cadence">Reporting Cadence</a>
+            <a href="#kpi-directory">KPI Directory</a>
+            <a href="#live-update">Submit KPI Update</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- SECTION: Overview -->
+        <section id="overview">
+            <h2>Why These KPIs Matter</h2>
+            <div class="card">
+                <p>
+                    Our KPIs are the heartbeat of NJTC's mission. They measure our promise to deliver transformational 
+                    impact for scholars, sustain our organization financially, and build the infrastructure required 
+                    to serve students across New Jersey at scale. Each KPI is a vital sign—a clear signal of whether 
+                    we are effective, stable, and positioned for growth.
+                </p>
+                <p>
+                    Every department owns a portion of organizational health. Performance in these areas directly influences 
+                    our ability to grow, fund operations, staff programs effectively, and execute our mission with excellence. 
+                    These KPIs ensure that NJTC, at every level, is aligned, accountable, and moving toward shared goals.
+                </p>
+                <div class="flex-row" style="margin-top: 20px;">
+                    <div class="flex-col-2">
+                        <strong style="font-size:0.9rem;color:var(--njtc-navy);">What these KPIs indicate:</strong>
+                        <ul class="pill-list">
+                            <li>Scholar impact & academic growth</li>
+                            <li>Financial stability & revenue diversification</li>
+                            <li>Operational capacity & systems readiness</li>
+                            <li>Workforce health & staff retention</li>
+                            <li>Brand visibility & partner confidence</li>
+                        </ul>
+                    </div>
+                    <div class="flex-col-2">
+                        <strong style="font-size:0.9rem;color:var(--njtc-navy);">Why each department cares:</strong>
+                        <ul class="pill-list">
+                            <li><strong>Programs:</strong> Quality & reach of tutoring services</li>
+                            <li><strong>HR:</strong> Tutor pipeline, diversity, & retention</li>
+                            <li><strong>Finance:</strong> Sustainability & financial runway</li>
+                            <li><strong>Evaluation:</strong> Proof of impact & learning gains</li>
+                            <li><strong>Leadership:</strong> Strategy execution & growth decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Mission, Vision, Theory of Action -->
+        <section id="mission-vision">
+            <h2>Mission, Vision, and Theory of Action</h2>
+            <div class="mission-vision-grid">
+                <div class="mission-vision-card">
+                    <h4>Mission</h4>
+                    <p>
+                        The New Jersey Tutoring Corps provides high-quality, evidence-based tutoring to students across 
+                        New Jersey, closing opportunity gaps and accelerating academic achievement for every scholar we serve.
+                    </p>
+                </div>
+                <div class="mission-vision-card">
+                    <h4>Vision</h4>
+                    <p>
+                        We envision a New Jersey where every student has access to personalized, high-dosage tutoring that 
+                        unlocks their full academic potential—powered by a diverse educator pipeline and sustained by 
+                        long-term partnerships and resources.
+                    </p>
+                </div>
+                <div class="mission-vision-card">
+                    <h4>Theory of Action</h4>
+                    <p>
+                        By recruiting, training, and deploying exceptional tutors; partnering strategically with schools and 
+                        districts; and continuously evaluating our impact—we create sustainable learning gains for scholars, 
+                        strengthen New Jersey's educator pipeline, and build a financially resilient organization capable of 
+                        statewide scale.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Strategic Plan Goals -->
+        <section id="strategic-goals">
+            <h2>Strategic Plan Goals</h2>
+            <p>
+                NJTC's strategic plan is organized around three major goals that guide all organizational efforts. 
+                These goals ensure we deliver measurable impact, maintain financial health, and strengthen the systems 
+                needed for sustainable growth.
+            </p>
+            <div class="flex-row" style="margin-top: 24px;">
+                <div class="flex-col-3">
+                    <div class="strategic-goal-card">
+                        <div class="strategic-goal-icon">📈</div>
+                        <div class="strategic-goal-title">Grow Impact</div>
+                        <div class="strategic-goal-desc">
+                            Expand the number of scholars served, increase academic growth outcomes, and support 
+                            New Jersey's educator pipeline through innovative apprenticeship programs.
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-col-3">
+                    <div class="strategic-goal-card">
+                        <div class="strategic-goal-icon">💰</div>
+                        <div class="strategic-goal-title">Ensure Long-Term Financial Sustainability</div>
+                        <div class="strategic-goal-desc">
+                            Diversify revenue streams through fee-for-service partnerships, multi-year funding, 
+                            and strategic philanthropy to maintain a healthy cash position.
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-col-3">
+                    <div class="strategic-goal-card">
+                        <div class="strategic-goal-icon">🏗️</div>
+                        <div class="strategic-goal-title">Strengthen Organizational Infrastructure</div>
+                        <div class="strategic-goal-desc">
+                            Build robust systems, retain top talent, maintain partner satisfaction, and grow 
+                            NJTC's brand visibility to support long-term organizational capacity.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Annual Goals & KPIs -->
+        <section id="annual-goals">
+            <h2>Annual Goals & Key Performance Indicators</h2>
+            <p>
+                Our annual goals break down the strategic plan into actionable areas. Each goal area contains specific KPIs 
+                with clear targets, owners, and validation methods. Expand each category below to view the full list of KPIs.
+            </p>
+            
+            <div class="accordion" id="kpi-accordion">
+                <!-- JavaScript will populate accordion items here -->
+            </div>
+        </section>
+
+        <!-- SECTION: Reporting Cadence -->
+        <section id="cadence">
+            <h2>Reporting Cadence & Status Bands</h2>
+            <div class="card">
+                <h3>Reporting Schedule</h3>
+                <div class="reporting-cadence-grid">
+                    <div class="reporting-cadence-item">
+                        <h4>Quarterly</h4>
+                        <p>Informal pulse checks on progress, movement, and emerging risks</p>
+                    </div>
+                    <div class="reporting-cadence-item">
+                        <h4>Mid-Year</h4>
+                        <p>Formal review of current standing versus annual targets</p>
+                    </div>
+                    <div class="reporting-cadence-item">
+                        <h4>End-of-Cycle</h4>
+                        <p>Comprehensive assessment of goal achievement and lessons learned</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 32px;">Status Bands</h3>
+                <p>
+                    Each KPI is evaluated using standardized status bands that provide consistent measurement across the organization. 
+                    Teams should report both quantitative progress and qualitative context.
+                </p>
+                <div class="status-bands">
+                    <div class="status-chip status-has-met">
+                        <span>Has Met</span> · 81–100%
+                    </div>
+                    <div class="status-chip status-partially-met">
+                        <span>Partially Met</span> · 51–80.9%
+                    </div>
+                    <div class="status-chip status-has-not-met">
+                        <span>Has Not Met</span> · 0–50.9%
+                    </div>
+                    <div class="status-chip status-in-progress">
+                        <span>In Progress</span> · Insufficient data or work underway
+                    </div>
+                </div>
+                <p class="helper-text" style="margin-top: 12px;">
+                    Context matters: A 75% achievement rate might be on track if external factors delayed implementation, 
+                    or concerning if fundamental obstacles exist. Always provide narrative context with your numbers.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION: KPI Directory -->
+        <section id="kpi-directory">
+            <div class="kpi-directory-header">
+                <h2 style="margin: 0;">KPI Directory</h2>
+            </div>
+            <p>
+                Browse all 40 KPIs organized by strategic goal. Use the filters to narrow by goal area, annual category, 
+                or owner. Click any KPI card to pre-populate the submission form below.
+            </p>
+            
+            <div class="kpi-filter-controls">
+                <select id="filter-strategic-goal" class="filter-select">
+                    <option value="">All Strategic Goals</option>
+                </select>
+                <select id="filter-annual-category" class="filter-select">
+                    <option value="">All Annual Categories</option>
+                </select>
+                <select id="filter-owner" class="filter-select">
+                    <option value="">All Owners</option>
+                </select>
+            </div>
+
+            <div id="kpi-list" class="kpi-grid">
+                <!-- JavaScript will populate KPI cards here -->
+            </div>
+        </section>
+
+        <!-- SECTION: Live KPI Update Form -->
+        <section id="live-update">
+            <h2>Submit KPI Update</h2>
+            <p style="font-size:0.95rem;">
+                Use this form to report progress on a specific KPI as part of quarterly pulse checks, mid-year reviews, 
+                or end-of-cycle reporting. Select the goal category and owner, choose the metric, and provide both 
+                quantitative achievement data and qualitative context.
+            </p>
+
+            <div class="card">
+                <form id="kpi-update-form">
+                    <label>
+                        <span>Annual Goal Category & Owner</span>
+                        <select id="goal-owner-select" required></select>
+                        <div class="helper-text">Select the annual goal category and primary metric owner from the database.</div>
+                    </label>
+
+                    <label>
+                        <span>Metric Being Reported</span>
+                        <select id="metric-select" required></select>
+                        <div class="helper-text">Choose the specific organizational target (KPI) tied to the selected category and owner.</div>
+                    </label>
+
+                    <div class="flex-row">
+                        <div class="flex-col-2">
+                            <label>
+                                <span>Date of Captured Metric</span>
+                                <input type="date" id="metric-date" required />
+                            </label>
+                        </div>
+                        <div class="flex-col-2">
+                            <label>
+                                <span>Source Type</span>
+                                <select id="source-type" required></select>
+                                <div class="helper-text">Validation method (e.g., PEARL, iReady Extract, TAP Tracker)</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <label>
+                        <span>Goal Achievement (%)</span>
+                        <input type="number" id="goal-achievement" name="goal_achievement_percent" min="0" max="150" step="0.1" />
+                        <div class="helper-text">
+                            Enter percentage of target achieved: 0–50.9% = Has Not Met · 51–80.9% = Partially Met · 81–100% = Has Met
+                        </div>
+                    </label>
+
+                    <label>
+                        <span>Department Context or Notes</span>
+                        <textarea 
+                            id="department-context" 
+                            rows="5" 
+                            placeholder="Provide qualitative context about this KPI's progress:&#10;&#10;• What's working well?&#10;• What challenges or risks exist?&#10;• What support or resources are needed?&#10;• Any strategic insights or next steps?" 
+                            aria-label="Department context or notes for this KPI"
+                        ></textarea>
+                        <div class="helper-text">
+                            Narrative context is essential. Explain the story behind the numbers—whether progress is on track, at risk, or requires intervention.
+                        </div>
+                    </label>
+
+                    <label>
+                        <span>Submitted By (optional)</span>
+                        <input type="text" id="submitted-by" placeholder="Name or role (e.g., Program Manager, HR Director)" />
+                    </label>
+
+                    <!-- Hidden fields required for POST -->
+                    <input type="hidden" id="selected-kpi-id" />
+                    <input type="hidden" id="selected-kpi-category" />
+                    <input type="hidden" id="selected-kpi-owner" />
+                    <input type="hidden" id="selected-kpi-strategic-goal" />
+
+                    <button type="submit">Submit KPI Update</button>
+                </form>
+
+                <div id="submission-status" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Inject KPI JSON data into window.kpiData -->
+    <script>
+        window.kpiData = {"strategic_plan_goals":["Grow Impact","Ensure Long-Term Financial Sustainability","Strengthen Organizational Infrastructure"],"annual_goal_categories":["Increase Impact on Scholars","Support Growth of New Jersey's Educator Pipeline","Increase the number of fee-for-service partnerships","Continue to pursue large and multi-year sources of funding","Maintain cash position","Further Diversify board and leverage its support","Upgrade systems to support growth","Maintain consistent partner experience","Grow the NJTC brand"],"status_bands":{"has_not_met":{"range":"0 - 50.9%","label":"Has Not Met"},"partially_met":{"range":"51 - 80.9%","label":"Partially Met"},"has_met":{"range":"81 - 100%","label":"Has Met"},"in_progress":{"label":"In Progress","definition":"not enough data to determine status or the work is under development to measure progress"}},"kpis":[{"id":"KPI_001","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"By 2026, serve 2000 scholars annually","primary_metric_owner":"Director, Evaluation and Impact","secondary_metric_owner":"Executive Director of Programs","validation_method":"PEARL","secondary_validation_method":"SY Database"},{"id":"KPI_002","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"By 2026 serve 35 sites annually","primary_metric_owner":"Executive Director of Programs","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"SY Database","secondary_validation_method":"PEARL"},{"id":"KPI_003","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"Placement Level Change: 80% of all scholars advancing a level in math or ela","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"iReady Extract"},{"id":"KPI_004","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"Progress Towards Proficiency: Math 20% increase of scholars that reach grade-level proficiency; ELA 20% increase of scholars that reach grade-level below","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"iReady Extract"},{"id":"KPI_005","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"Gap Closing: 35% decrease in scholar 2+ grade levels below","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"iReady Extract"},{"id":"KPI_006","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"80% scholars self-report that they increased confidence post session in ELA","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"PEARL"},{"id":"KPI_007","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"80% scholars self-report that they increased confidence post-session in Math","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"PEARL"},{"id":"KPI_008","strategic_plan_goal":"Grow Impact","annual_goal_category":"Increase Impact on Scholars","organizational_target":"92% of onsite staff observe scholar growth","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"EOP All Staff Survey","secondary_validation_method":"PEARL"},{"id":"KPI_009","strategic_plan_goal":"Grow Impact","annual_goal_category":"Support Growth of New Jersey's Educator Pipeline","organizational_target":"40 tutor apprentices for SY 25-26 - 40 registered tutored apprentices.","primary_metric_owner":"Chief Operating Officer","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"TAP Tracker"},{"id":"KPI_010","strategic_plan_goal":"Grow Impact","annual_goal_category":"Support Growth of New Jersey's Educator Pipeline","organizational_target":"Secure 1 DOL grant to expand apprenticeship program","primary_metric_owner":"Chief Operating Officer","validation_method":"Philanthropy Tracker"},{"id":"KPI_011","strategic_plan_goal":"Grow Impact","annual_goal_category":"Support Growth of New Jersey's Educator Pipeline","organizational_target":"5 NJTC apprentices join Teacher Apprenticeship Network (TAN) in 2026","primary_metric_owner":"Chief Operating Officer","validation_method":"TAP Tracker"},{"id":"KPI_012","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Increase the number of fee-for-service partnerships","organizational_target":"35 SY sites - all of which are fee-for-service sites (does not include low-cost pilot)","primary_metric_owner":"Executive Director of Programs","metric_owner":"Finance Director","validation_method":"Quote Builder"},{"id":"KPI_013","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Increase the number of fee-for-service partnerships","organizational_target":"Secure 3 new low-cost pilot customers using new grant funds","primary_metric_owner":"Executive Director of Programs & Strategic Advisor","metric_owner":"Finance Director","validation_method":"Quote Builder"},{"id":"KPI_014","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Increase the number of fee-for-service partnerships","organizational_target":"75% of sites cover full fee-for-service (does not include low-cost pilot)","primary_metric_owner":"Executive Director of Programs","metric_owner":"Finance Director","validation_method":"Quote Builder"},{"id":"KPI_015","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Increase the number of fee-for-service partnerships","organizational_target":"Add 1 additional out-of-state customer","primary_metric_owner":"Executive Director of Programs","validation_method":"SY Database"},{"id":"KPI_016","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Increase the number of fee-for-service partnerships","organizational_target":"Apply to a least 10 local/regional RFPs annually","primary_metric_owner":"Chief Executive Officer & Strategic Advisor","metric_owner":"Executive Director of Programs","validation_method":"Outreach Tracker","secondary_validation_method":"Asana Project Plan"},{"id":"KPI_017","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Continue to pursue large and multi-year sources of funding","organizational_target":"Identify and apply to 2 new multi-year or $500K+ funding opportunities","primary_metric_owner":"Chief Executive Officer","validation_method":"Philanthropy Tracker"},{"id":"KPI_018","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Continue to pursue large and multi-year sources of funding","organizational_target":"Secure $850,000 in philanthropic funds","primary_metric_owner":"Chief Executive Officer","metric_owner":"Finance Director","validation_method":"Philanthropy Tracker","secondary_validation_method":"Quote Builder"},{"id":"KPI_019","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Continue to pursue large and multi-year sources of funding","organizational_target":"Secure new philanthropic partners totaling $200k","primary_metric_owner":"Finance Director","validation_method":"Philanthropy Tracker","secondary_validation_method":"Quote Builder"},{"id":"KPI_020","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Continue to pursue large and multi-year sources of funding","organizational_target":"Secure support from FY 27 State budget","primary_metric_owner":"Finance Director","validation_method":"Grant Tracker"},{"id":"KPI_021","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Maintain cash position","organizational_target":"Maintain $500K in Moneymarket portion of investment accounts by the end of 2026","primary_metric_owner":"Finance Director","validation_method":"Moneymarket","secondary_validation_method":"Quote Builder"},{"id":"KPI_022","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Further Diversify board and leverage its support","organizational_target":"Increase the number of introductions by board members to school district partners & potential donors (At least 1 intro per board member; total of 15)","primary_metric_owner":"Chief Executive Officer & Strategic Advisor","validation_method":"Email"},{"id":"KPI_023","strategic_plan_goal":"Ensure Long-Term Financial Sustainability","annual_goal_category":"Further Diversify board and leverage its support","organizational_target":"Maintain 100% board giving; Increase total board giving by 10%","primary_metric_owner":"Executive Director of Programs & Strategic Advisor","metric_owner":"Finance Director","validation_method":"Access must be requested to document"},{"id":"KPI_024","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"Revised performance evaluation system in place by November 2025","primary_metric_owner":"Chief Operating Officer & Head of HR","validation_method":"Asana Project Plan"},{"id":"KPI_025","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"KPI Dashboard is 100% operational by October 2025","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"KPI Database"},{"id":"KPI_026","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"2025-2026 Program Evaluation completed by August of 2026","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"Asana Project Plan"},{"id":"KPI_027","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"NJTC Annual Report sent to Stakeholders by December 2025","primary_metric_owner":"Chief Executive Officer & Chief Operating Officer","validation_method":"Asana Project Plan"},{"id":"KPI_028","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"Data Governance is documented for all internal reporting by December 2025","primary_metric_owner":"Director, Evaluation and Impact","validation_method":"PEARL / iREADY / KPI Database"},{"id":"KPI_029","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"Annual Budgeting process completed by August 1, 2025","primary_metric_owner":"Leadership Team","validation_method":"Asana Project Plan"},{"id":"KPI_030","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Upgrade systems to support growth","organizational_target":"Leadership completes a Mid-Year and End of year retreat","primary_metric_owner":"Leadership Team"},{"id":"KPI_031","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Maintain consistent partner experience","organizational_target":"80% annual core staff retention","primary_metric_owner":"Leadership Team","validation_method":"Central Team Satisfaction Survey"},{"id":"KPI_032","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Maintain consistent partner experience","organizational_target":"60% annual on-site staff retention","primary_metric_owner":"Head of HR","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"ADP: WFN","secondary_validation_method":"SY Database"},{"id":"KPI_033","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Maintain consistent partner experience","organizational_target":"Increase diversity of tutors to mirror student diversity","primary_metric_owner":"Head of HR","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"ADP: WFN","secondary_validation_method":"PEARL"},{"id":"KPI_034","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Maintain consistent partner experience","organizational_target":"Host 2 in person events for central team (Winter and Summer)","primary_metric_owner":"Leadership Team"},{"id":"KPI_035","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"10 local media hits per year","primary_metric_owner":"Chief Executive Officer","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"Media Hits Docment (Katherine)","secondary_validation_method":"Media Tracker"},{"id":"KPI_036","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"Attend 5 local education and/or non-profit conferences and webinars - these could include having a booth at a local conference; speaking engagements at 2","primary_metric_owner":"Chief Executive Officer","validation_method":"Outreach Tracker"},{"id":"KPI_037","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"Participate in 3 national conferences or webinars with presentations at 2","primary_metric_owner":"Chief Executive Officer","validation_method":"Media Hits Docment (Katherine)","secondary_validation_method":"Outreach Tracker"},{"id":"KPI_038","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"Increase followers by 20% on social media platforms (in the aggregate)","primary_metric_owner":"Chief Executive Officer","secondary_metric_owner":"Director, Evaluation and Impact","validation_method":"Media Hits Docment (Katherine)","secondary_validation_method":"Media Tracker"},{"id":"KPI_039","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"Meet with at least 7 education organizations across New Jersey","primary_metric_owner":"Chief Executive Officer","validation_method":"Outreach Tracker"},{"id":"KPI_040","strategic_plan_goal":"Strengthen Organizational Infrastructure","annual_goal_category":"Grow the NJTC brand","organizational_target":"Attend 5 South Jersey Chamber events","primary_metric_owner":"Chief Executive Officer","validation_method":"Outreach Tracker"}]};
+    </script>
+
+    <script>
+        // Google Apps Script web app URL - DO NOT CHANGE
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzlBj2k2HLWhmiW9FZCxFqkGRRvSxgtyR8rPbba0MQy_ez7nK-NmqliwaIBAbz1Tfr8WA/exec";
+
+        // Form element references - DO NOT CHANGE IDs
+        const goalOwnerSelect = document.getElementById("goal-owner-select");
+        const metricSelect = document.getElementById("metric-select");
+        const sourceTypeSelect = document.getElementById("source-type");
+        const hiddenKpiId = document.getElementById("selected-kpi-id");
+        const hiddenKpiCategory = document.getElementById("selected-kpi-category");
+        const hiddenKpiOwner = document.getElementById("selected-kpi-owner");
+        const hiddenKpiStrategicGoal = document.getElementById("selected-kpi-strategic-goal");
+
+        const kpiListContainer = document.getElementById("kpi-list");
+        const accordionContainer = document.getElementById("kpi-accordion");
+
+        // Filter elements
+        const filterStrategicGoal = document.getElementById("filter-strategic-goal");
+        const filterAnnualCategory = document.getElementById("filter-annual-category");
+        const filterOwner = document.getElementById("filter-owner");
+
+        function initFromKpiData(kpiData) {
+            if (!kpiData || !kpiData.kpis) return;
+
+            const uniqueGoalOwnerPairs = {};
+            const uniqueSources = new Set();
+            const uniqueStrategicGoals = new Set();
+            const uniqueAnnualCategories = new Set();
+            const uniqueOwners = new Set();
+
+            // Build unique collections for filters and dropdowns
+            kpiData.kpis.forEach(kpi => {
+                const primaryOwner = kpi.primary_metric_owner || kpi.metric_owner || "";
+                const key = kpi.annual_goal_category + " | " + primaryOwner;
+
+                if (!uniqueGoalOwnerPairs[key]) {
+                    uniqueGoalOwnerPairs[key] = {
+                        category: kpi.annual_goal_category,
+                        owner: primaryOwner,
+                        strategic_plan_goal: kpi.strategic_plan_goal
+                    };
+                }
+
+                if (kpi.validation_method) uniqueSources.add(kpi.validation_method);
+                if (kpi.secondary_validation_method) uniqueSources.add(kpi.secondary_validation_method);
+                
+                uniqueStrategicGoals.add(kpi.strategic_plan_goal);
+                uniqueAnnualCategories.add(kpi.annual_goal_category);
+                if (primaryOwner) uniqueOwners.add(primaryOwner);
+            });
+
+            // Populate Annual Goal Category & Owner dropdown
+            Object.entries(uniqueGoalOwnerPairs).forEach(([key, value]) => {
+                const opt = document.createElement("option");
+                opt.value = key;
+                opt.textContent = `${value.category} – ${value.owner}`;
+                opt.dataset.category = value.category;
+                opt.dataset.owner = value.owner;
+                opt.dataset.strategicPlanGoal = value.strategic_plan_goal;
+                goalOwnerSelect.appendChild(opt);
+            });
+
+            // Populate Source Type dropdown
+            Array.from(uniqueSources).sort().forEach(src => {
+                const opt = document.createElement("option");
+                opt.value = src;
+                opt.textContent = src;
+                sourceTypeSelect.appendChild(opt);
+            });
+
+            // Populate filter dropdowns
+            Array.from(uniqueStrategicGoals).sort().forEach(goal => {
+                const opt = document.createElement("option");
+                opt.value = goal;
+                opt.textContent = goal;
+                filterStrategicGoal.appendChild(opt);
+            });
+
+            Array.from(uniqueAnnualCategories).sort().forEach(cat => {
+                const opt = document.createElement("option");
+                opt.value = cat;
+                opt.textContent = cat;
+                filterAnnualCategory.appendChild(opt);
+            });
+
+            Array.from(uniqueOwners).sort().forEach(owner => {
+                const opt = document.createElement("option");
+                opt.value = owner;
+                opt.textContent = owner;
+                filterOwner.appendChild(opt);
+            });
+
+            function refreshMetricOptions() {
+                const selected = goalOwnerSelect.value;
+                if (!selected) return;
+                const [category, owner] = selected.split(" | ");
+
+                metricSelect.innerHTML = "";
+
+                const filteredKpis = kpiData.kpis.filter(
+                    kpi =>
+                        kpi.annual_goal_category === category &&
+                        (kpi.primary_metric_owner === owner || kpi.metric_owner === owner)
+                );
+
+                filteredKpis.forEach(kpi => {
+                    const opt = document.createElement("option");
+                    opt.value = kpi.id;
+                    opt.textContent = kpi.organizational_target;
+                    opt.dataset.strategicPlanGoal = kpi.strategic_plan_goal;
+                    metricSelect.appendChild(opt);
+                });
+
+                if (filteredKpis.length > 0) {
+                    const first = filteredKpis[0];
+                    hiddenKpiId.value = first.id;
+                    hiddenKpiCategory.value = first.annual_goal_category;
+                    hiddenKpiOwner.value = first.primary_metric_owner || first.metric_owner || "";
+                    hiddenKpiStrategicGoal.value = first.strategic_plan_goal;
+                }
+            }
+
+            goalOwnerSelect.addEventListener("change", refreshMetricOptions);
+
+            metricSelect.addEventListener("change", () => {
+                const selectedId = metricSelect.value;
+                const kpi = kpiData.kpis.find(k => k.id === selectedId);
+                if (kpi) {
+                    hiddenKpiId.value = kpi.id;
+                    hiddenKpiCategory.value = kpi.annual_goal_category;
+                    hiddenKpiOwner.value = kpi.primary_metric_owner || kpi.metric_owner || "";
+                    hiddenKpiStrategicGoal.value = kpi.strategic_plan_goal;
+                }
+            });
+
+            // Initialize on load
+            if (goalOwnerSelect.options.length > 0) {
+                goalOwnerSelect.selectedIndex = 0;
+                refreshMetricOptions();
+            }
+
+            // Build KPI directory and accordion
+            buildKpiDirectory(kpiData.kpis);
+            buildAccordion(kpiData);
+
+            // Add filter event listeners
+            filterStrategicGoal.addEventListener("change", () => filterKpis(kpiData.kpis));
+            filterAnnualCategory.addEventListener("change", () => filterKpis(kpiData.kpis));
+            filterOwner.addEventListener("change", () => filterKpis(kpiData.kpis));
+        }
+
+        function filterKpis(allKpis) {
+            const goalFilter = filterStrategicGoal.value;
+            const categoryFilter = filterAnnualCategory.value;
+            const ownerFilter = filterOwner.value;
+
+            const filtered = allKpis.filter(kpi => {
+                const matchesGoal = !goalFilter || kpi.strategic_plan_goal === goalFilter;
+                const matchesCategory = !categoryFilter || kpi.annual_goal_category === categoryFilter;
+                const matchesOwner = !ownerFilter || 
+                    kpi.primary_metric_owner === ownerFilter || 
+                    kpi.metric_owner === ownerFilter;
+                return matchesGoal && matchesCategory && matchesOwner;
+            });
+
+            buildKpiDirectory(filtered);
+        }
+
+        function buildAccordion(kpiData) {
+            accordionContainer.innerHTML = "";
+            
+            // Group KPIs by strategic goal, then by annual category
+            const grouped = {};
+            
+            kpiData.strategic_plan_goals.forEach(goal => {
+                grouped[goal] = {};
+            });
+
+            kpiData.kpis.forEach(kpi => {
+                const goal = kpi.strategic_plan_goal;
+                const category = kpi.annual_goal_category;
+                
+                if (!grouped[goal][category]) {
+                    grouped[goal][category] = [];
+                }
+                grouped[goal][category].push(kpi);
+            });
+
+            // Build accordion items
+            Object.keys(grouped).forEach(goal => {
+                Object.keys(grouped[goal]).forEach(category => {
+                    const kpis = grouped[goal][category];
+                    
+                    const accordionItem = document.createElement("div");
+                    accordionItem.className = "accordion-item";
+
+                    const header = document.createElement("div");
+                    header.className = "accordion-header";
+                    
+                    const headerTitle = document.createElement("div");
+                    headerTitle.className = "accordion-header-title";
+                    headerTitle.textContent = `${category} (${kpis.length} KPIs)`;
+                    
+                    const icon = document.createElement("div");
+                    icon.className = "accordion-icon";
+                    icon.textContent = "▼";
+                    
+                    header.appendChild(headerTitle);
+                    header.appendChild(icon);
+
+                    const content = document.createElement("div");
+                    content.className = "accordion-content";
+                    
+                    const contentInner = document.createElement("div");
+                    contentInner.className = "accordion-content-inner";
+
+                    const goalBadge = document.createElement("div");
+                    goalBadge.className = "badge";
+                    goalBadge.style.marginBottom = "16px";
+                    const badgeDot = document.createElement("div");
+                    badgeDot.className = "badge-dot";
+                    const badgeText = document.createElement("span");
+                    badgeText.textContent = goal;
+                    goalBadge.appendChild(badgeDot);
+                    goalBadge.appendChild(badgeText);
+                    contentInner.appendChild(goalBadge);
+
+                    kpis.forEach(kpi => {
+                        const kpiItem = document.createElement("div");
+                        kpiItem.className = "kpi-item";
+
+                        const kpiHeader = document.createElement("div");
+                        kpiHeader.className = "kpi-item-header";
+
+                        const kpiId = document.createElement("div");
+                        kpiId.className = "kpi-id";
+                        kpiId.textContent = kpi.id;
+
+                        const kpiTarget = document.createElement("div");
+                        kpiTarget.className = "kpi-target";
+                        kpiTarget.textContent = kpi.organizational_target;
+
+                        kpiHeader.appendChild(kpiId);
+                        kpiHeader.appendChild(kpiTarget);
+
+                        const kpiMeta = document.createElement("div");
+                        kpiMeta.className = "kpi-meta";
+                        const owner = kpi.primary_metric_owner || kpi.metric_owner || "N/A";
+                        const validation = kpi.validation_method || "N/A";
+                        const secondaryValidation = kpi.secondary_validation_method ? ` | ${kpi.secondary_validation_method}` : "";
+                        kpiMeta.innerHTML = `<strong>Owner:</strong> ${owner} | <strong>Validation:</strong> ${validation}${secondaryValidation}`;
+
+                        kpiItem.appendChild(kpiHeader);
+                        kpiItem.appendChild(kpiMeta);
+
+                        contentInner.appendChild(kpiItem);
+                    });
+
+                    content.appendChild(contentInner);
+
+                    accordionItem.appendChild(header);
+                    accordionItem.appendChild(content);
+
+                    // Toggle accordion
+                    header.addEventListener("click", () => {
+                        const isActive = accordionItem.classList.contains("active");
+                        
+                        // Close all accordion items
+                        document.querySelectorAll(".accordion-item").forEach(item => {
+                            item.classList.remove("active");
+                            item.querySelector(".accordion-content").style.maxHeight = null;
+                        });
+
+                        // Open clicked item if it wasn't active
+                        if (!isActive) {
+                            accordionItem.classList.add("active");
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+
+                    accordionContainer.appendChild(accordionItem);
+                });
+            });
+        }
+
+        function buildKpiDirectory(kpis) {
+            kpiListContainer.innerHTML = "";
+            
+            if (kpis.length === 0) {
+                kpiListContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #7a7a7a;">No KPIs match the selected filters.</p>';
+                return;
+            }
+
+            kpis.forEach(kpi => {
+                const card = document.createElement("div");
+                card.className = "card kpi-card";
+                card.dataset.kpiId = kpi.id;
+
+                const header = document.createElement("div");
+                header.className = "card-header";
+
+                const title = document.createElement("div");
+                title.className = "card-title";
+                title.textContent = kpi.organizational_target;
+
+                const badge = document.createElement("div");
+                badge.className = "badge";
+                const dot = document.createElement("div");
+                dot.className = "badge-dot";
+                const label = document.createElement("span");
+                label.textContent = kpi.strategic_plan_goal;
+                badge.appendChild(dot);
+                badge.appendChild(label);
+
+                header.appendChild(title);
+                header.appendChild(badge);
+
+                const meta = document.createElement("div");
+                meta.className = "card-meta";
+                const owner = kpi.primary_metric_owner || kpi.metric_owner || "N/A";
+                meta.textContent = `${kpi.annual_goal_category} · Owner: ${owner}`;
+
+                const val = document.createElement("div");
+                val.className = "helper-text";
+                const validation = kpi.validation_method || "N/A";
+                const secondaryValidation = kpi.secondary_validation_method ? " | " + kpi.secondary_validation_method : "";
+                val.textContent = `Validation: ${validation}${secondaryValidation}`;
+
+                const footer = document.createElement("div");
+                footer.className = "kpi-card-footer";
+                const idSpan = document.createElement("span");
+                idSpan.textContent = kpi.id;
+                const action = document.createElement("span");
+                action.className = "kpi-action";
+                action.textContent = "Submit update for this KPI";
+                footer.appendChild(idSpan);
+                footer.appendChild(action);
+
+                card.appendChild(header);
+                card.appendChild(meta);
+                card.appendChild(val);
+                card.appendChild(footer);
+
+                card.addEventListener("click", () => {
+                    selectKpiInForm(kpi);
+                    document.getElementById("live-update").scrollIntoView({ behavior: "smooth" });
+                });
+
+                kpiListContainer.appendChild(card);
+            });
+        }
+
+        function selectKpiInForm(kpi) {
+            if (!window.kpiData || !window.kpiData.kpis) return;
+
+            const primaryOwner = kpi.primary_metric_owner || kpi.metric_owner || "";
+            const targetKey = kpi.annual_goal_category + " | " + primaryOwner;
+
+            let foundIndex = -1;
+            for (let i = 0; i < goalOwnerSelect.options.length; i++) {
+                if (goalOwnerSelect.options[i].value === targetKey) {
+                    foundIndex = i;
+                    break;
+                }
+            }
+
+            if (foundIndex >= 0) {
+                goalOwnerSelect.selectedIndex = foundIndex;
+                const event = new Event("change");
+                goalOwnerSelect.dispatchEvent(event);
+            }
+
+            setTimeout(() => {
+                for (let i = 0; i < metricSelect.options.length; i++) {
+                    if (metricSelect.options[i].value === kpi.id) {
+                        metricSelect.selectedIndex = i;
+                        const changeEvent = new Event("change");
+                        metricSelect.dispatchEvent(changeEvent);
+                        break;
+                    }
+                }
+            }, 100);
+        }
+
+        // Initialize when page loads
+        window.addEventListener("load", () => {
+            if (window.kpiData) {
+                initFromKpiData(window.kpiData);
+            }
+            initScrollSpy();
+        });
+
+        // Scroll spy for active navigation
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            function setActiveLink() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink(); // Set initial active state
+        }
+
+        document.getElementById("kpi-update-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Build form data for Google Form submission
+            const formData = new FormData();
+            
+            // Annual Goal Category & Owner
+            formData.append("entry.1971354312", document.getElementById("goal-owner-select").value);
+            
+            // Metric Being Reported
+            formData.append("entry.1490774208", document.getElementById("metric-select").value);
+            
+            // Source Type
+            formData.append("entry.1425663631", document.getElementById("source-type").value);
+            
+            // Goal Achievement (%)
+            formData.append("entry.1888712931", document.getElementById("goal-achievement").value);
+            
+            // Department Context / Notes
+            formData.append("entry.1379198778", document.getElementById("department-context").value);
+            
+            // Submitted By
+            formData.append("entry.1060571871", document.getElementById("submitted-by").value);
+            
+            // Date of Captured Metric (Google Forms requires 3 separate fields)
+            const dateValue = document.getElementById("metric-date").value; // YYYY-MM-DD
+            if (dateValue) {
+                let parts = dateValue.split("-");
+                formData.append("entry.527808148_year", parts[0]);
+                formData.append("entry.527808148_month", parts[1]);
+                formData.append("entry.527808148_day", parts[2]);
+            }
+            
+            // GOOGLE FORM POST URL
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSd59ZRol4DKvJjX2oDAuO2mSICuo5H7ac3giNbUQQfAoMkUTg/formResponse", {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                document.getElementById("submission-status").textContent = "KPI update successfully submitted.";
+                document.getElementById("submission-status").style.color = "green";
+                event.target.reset();
+            }).catch(() => {
+                document.getElementById("submission-status").textContent = "Error submitting KPI update.";
+                document.getElementById("submission-status").style.color = "red";
+            });
+        });
+    </script>
+</body>
+</html>
